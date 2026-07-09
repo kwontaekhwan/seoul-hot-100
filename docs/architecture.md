@@ -1,4 +1,4 @@
-# 기술 아키텍처 — 서울 핫플 HOT 100
+# 기술 아키텍처 — 서울 핫플 100
 
 - 작성일: 2026-07-09
 - 상태: 초안 (v0.1)
@@ -8,7 +8,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│ GitHub Actions (cron: 10분 간격, 01~05시 KST 제외)        │
+│ GitHub Actions (cron: 30분 간격, 01~05시 KST 제외)        │
 │                                                          │
 │  collect.ts ──► 서울시 citydata_ppltn API (121곳 순회)    │
 │      │                                                   │
@@ -59,10 +59,9 @@ seoul-density/
 ### 3.1 수집 (collect.ts)
 
 - 대상: 서울시 실시간 인구데이터 `citydata_ppltn/1/1/{area}` — 121개 장소
-- 경로 (PRD 오픈 이슈 3):
-  - **1안(권장)**: 자체 `SEOUL_OPEN_API_KEY` (GitHub Secrets) 로 직접 호출 — 할당량 독립, 외부 의존 없음
-  - 2안: `k-skill-proxy.nomadamas.org/v1/seoul-density/citydata` 경유 — 키 불필요하나 공용 할당량 공유
-  - 스크립트는 `SEOUL_OPEN_API_KEY` 유무로 경로를 자동 선택 (환경변수 기반, 하드코딩 금지)
+- 경로: **자체 `SEOUL_OPEN_API_KEY` (GitHub Secrets) 로 서울 열린데이터광장 직접 호출** — 할당량 독립, 외부 프록시 의존 없음
+  - 엔드포인트: `http://openapi.seoul.go.kr:8088/{KEY}/json/citydata_ppltn/1/1/{area}`
+  - 키는 환경변수로만 주입, 코드·로그·산출물에 하드코딩 금지
 - 동시성 5, 요청당 타임아웃 10초, 실패 시 지수 백오프 2회 재시도
 - 부분 실패 허용: 실패한 장소는 직전 스냅샷 값을 유지하고 `stale: true` 마킹, 스냅샷 3회 연속 실패 시 랭킹에서 제외
 - 전체 실패(⅓ 이상 실패 등) 시 산출물을 갱신하지 않고 job 을 실패 처리 → 이전 JSON이 그대로 서비스됨 (무중단)
@@ -109,10 +108,10 @@ seoul-density/
 
 ### 3.4 스케줄·배포 (update-ranking.yml)
 
-- cron: `*/10 0-15,20-23 * * *` (UTC) — 01:00~04:59 KST(16~19 UTC) 제외, 10분 간격
+- cron: `*/30 0-15,20-23 * * *` (UTC) — 01:00~04:59 KST(16~19 UTC) 제외, 30분 간격
 - GitHub Actions cron 은 보장 실행이 아님 → 지연은 `generatedAt` 기반 앱 배지로 흡수
-- 배포: `actions/deploy-pages` (artifact 방식). 시간당 6회 배포로 Pages soft limit(10회/시간) 이내
-- 호출량: 121곳 × 약 114회/일 ≈ **13,800콜/일** — Phase 1 첫 태스크로 할당량 실측, 초과 시 30분 주기(약 4,600콜/일)로 하향
+- 배포: `actions/deploy-pages` (artifact 방식). 시간당 2회 배포로 Pages soft limit 여유
+- 호출량: 실행 20시간/일 × 2회/시 = 40사이클 × 121곳 ≈ **4,840콜/일** — Phase 1에서 발급 키의 실제 일일 할당량 대비 여유 확인
 - Secrets: `SEOUL_OPEN_API_KEY` 만 사용. 코드·산출물에 키 노출 금지
 
 ## 4. 앱 아키텍처 (Granite RN)
