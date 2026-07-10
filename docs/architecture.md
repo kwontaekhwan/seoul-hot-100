@@ -78,7 +78,7 @@ seoul-density/
 ```jsonc
 {
   "version": 1,
-  "generatedAt": "2026-07-09T15:40:00+09:00", // 파이프라인 실행 시각 (KST ISO8601)
+  "generatedAt": "2026-07-09T15:40:00.000+09:00", // 파이프라인 실행 시각 (KST ISO8601, ms 포함)
   "source": "서울 열린데이터광장 실시간 인구데이터 (KT·SKT 통신 신호 기반 추계)",
   "areas": [
     {
