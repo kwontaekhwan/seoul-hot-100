@@ -1,4 +1,5 @@
 name: Update ranking
+# 서울 핫플 100 랭킹 30분 주기 수집 + GitHub Pages 배포
 
 on:
   schedule:
