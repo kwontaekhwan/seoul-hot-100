@@ -1,0 +1,27 @@
+{
+  "SeoulRtd.citydata_ppltn": [
+    {
+      "AREA_NM": "강남역",
+      "AREA_CONGEST_LVL": "보통",
+      "AREA_CONGEST_MSG": "사람이 몰려있을 수 있지만 크게 붐비지는 않아요. 도보 이동에 큰 제약이 없어요.",
+      "AREA_PPLTN_MIN": "66000",
+      "AREA_PPLTN_MAX": "68000",
+      "MALE_PPLTN_RATE": "49.4",
+      "FEMALE_PPLTN_RATE": "50.6",
+      "PPLTN_RATE_0": "1.0",
+      "PPLTN_RATE_10": "3.6",
+      "PPLTN_RATE_20": "22.2",
+      "PPLTN_RATE_30": "26.3",
+      "PPLTN_RATE_40": "21.9",
+      "PPLTN_RATE_50": "14.4",
+      "PPLTN_RATE_60": "6.5",
+      "PPLTN_RATE_70": "4.1",
+      "PPLTN_TIME": "2026-07-10 09:30",
+      "FCST_YN": "Y",
+      "FCST_PPLTN": [
+        { "FCST_TIME": "2026-07-10 11:00", "FCST_CONGEST_LVL": "약간 붐빔", "FCST_PPLTN_MIN": "76000", "FCST_PPLTN_MAX": "78000" },
+        { "FCST_TIME": "2026-07-10 12:00", "FCST_CONGEST_LVL": "붐빔", "FCST_PPLTN_MIN": "84000", "FCST_PPLTN_MAX": "86000" }
+      ]
+    }
+  ]
+}
