@@ -23,4 +23,7 @@ describe('exceedsFailureThreshold', () => {
     expect(exceedsFailureThreshold(39, 119)).toBe(false); // 39/119 ≈ 32.8%
     expect(exceedsFailureThreshold(0, 119)).toBe(false);
   });
+  it('total이 0이면 false를 반환한다', () => {
+    expect(exceedsFailureThreshold(0, 0)).toBe(false);
+  });
 });
