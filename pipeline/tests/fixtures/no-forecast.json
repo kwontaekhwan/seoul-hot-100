@@ -1,0 +1,24 @@
+{
+  "SeoulRtd.citydata_ppltn": [
+    {
+      "AREA_NM": "보신각",
+      "AREA_CONGEST_LVL": "여유",
+      "AREA_CONGEST_MSG": "사람이 몰리지 않아 여유로워요.",
+      "AREA_PPLTN_MIN": "2000",
+      "AREA_PPLTN_MAX": "3000",
+      "MALE_PPLTN_RATE": "55.0",
+      "FEMALE_PPLTN_RATE": "45.0",
+      "PPLTN_RATE_0": "0.5",
+      "PPLTN_RATE_10": "2.0",
+      "PPLTN_RATE_20": "18.0",
+      "PPLTN_RATE_30": "20.0",
+      "PPLTN_RATE_40": "22.0",
+      "PPLTN_RATE_50": "18.5",
+      "PPLTN_RATE_60": "12.0",
+      "PPLTN_RATE_70": "7.0",
+      "PPLTN_TIME": "2026-07-10 09:30",
+      "FCST_YN": "N",
+      "FCST_PPLTN": null
+    }
+  ]
+}
