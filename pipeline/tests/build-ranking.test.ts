@@ -110,4 +110,11 @@ describe('fetchPrevious', () => {
     const fetchImpl = vi.fn(async () => { throw new Error('네트워크'); });
     expect(await fetchPrevious('http://x/ranking.json', fetchImpl)).toBeNull();
   });
+
+  it('타임아웃(abort)이면 null을 반환한다', async () => {
+    const fetchImpl = vi.fn(async (_input: Parameters<typeof fetch>[0]) => {
+      throw new Error('aborted');
+    });
+    expect(await fetchPrevious('http://x/ranking.json', fetchImpl)).toBeNull();
+  });
 });
