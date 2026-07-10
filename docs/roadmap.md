@@ -15,17 +15,23 @@
 
 **DoD**: 문서 4종 승인 완료.
 
-## Phase 1 — 데이터 파이프라인
+## Phase 1 — 데이터 파이프라인 ✅ 배포 완료 (2026-07-10)
 
-- [ ] 서울시 열린데이터광장 API 키 발급 + 30분 주기(약 4,840콜/일) 대비 **할당량 여유 확인**
-- [ ] `pipeline/` 구현 (TDD): areas 목록 → collect → build-ranking → ranking.json
-  - [ ] 정렬·순위변동 diff 단위 테스트
-  - [ ] 부분 실패·전체 실패 처리 테스트
-  - [ ] zod 스키마 검증 (API 응답 + 산출물)
-- [ ] GitHub Actions workflow: cron `*/30 0-15,20-23 * * *` + Pages 배포
-- [ ] 24시간 시운전: 갱신 성공률·지연 측정, 새벽 시간대 동작 확인
+- [x] 서울시 열린데이터광장 API 키 발급 + 할당량 여유 확인 (119/119 수집 성공, 30분 주기 약 4,760콜/일로 여유)
+- [x] `pipeline/` 구현 (TDD): areas 목록 → collect → build-ranking → ranking.json
+  - [x] 정렬·순위변동 diff 단위 테스트
+  - [x] 부분 실패·전체 실패 처리 테스트
+  - [x] zod 스키마 검증 (API 응답 + 산출물)
+- [x] GitHub Actions workflow: cron `*/30 0-15,20-23 * * *` + Pages 배포
+- [x] 라이브 배포: `https://kwontaekhwan.github.io/seoul-hot-100/ranking.json` (HTTP 200, ACAO `*`, 119곳)
+- [ ] 24시간 시운전: 갱신 성공률·지연 측정, 새벽 시간대 동작 확인 (첫 cron 실행 대기 중)
 
 **DoD**: 공개 URL에서 ranking.json 이 30분(±지연) 주기로 갱신되고, 24시간 시운전 성공률 95%+.
+→ 공개 URL 서빙·수동 실행 성공 확인. 24시간 시운전(자동 cron 성공률)만 관찰 남음.
+
+**리포:** github.com/kwontaekhwan/seoul-hot-100 (public). Secret `SEOUL_OPEN_API_KEY` 등록됨, Pages Source=Actions.
+
+**후속(비긴급):** Actions 로그에 Node 20 deprecation 경고 — action 래퍼 런타임 관련(빌드 자체는 정상). 향후 `actions/*` 메이저 버전 상향 시 해소.
 
 ## Phase 2 — 앱 MVP
 
