@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-10T09:00:00.000+09:00",
+  "source": "서울 열린데이터광장 실시간 인구데이터 (KT·SKT 통신 신호 기반 추계)",
+  "areas": [
+    {
+      "rank": 1, "prevRank": 1, "name": "강남역", "category": "인구밀집지역",
+      "congestLevel": "보통", "congestMessage": "보통이에요",
+      "populationMin": 60000, "populationMax": 62000, "populationTime": "2026-07-10 08:30",
+      "stale": false, "staleCount": 0,
+      "rates": { "male": 50, "female": 50, "age": { "0":1,"10":4,"20":22,"30":26,"40":22,"50":14,"60":7,"70":4 } },
+      "forecast": []
+    },
+    {
+      "rank": 2, "prevRank": 2, "name": "보신각", "category": "고궁·문화유산",
+      "congestLevel": "여유", "congestMessage": "여유로워요",
+      "populationMin": 2000, "populationMax": 3000, "populationTime": "2026-07-10 08:30",
+      "stale": true, "staleCount": 1,
+      "rates": { "male": 55, "female": 45, "age": { "0":0,"10":2,"20":18,"30":20,"40":22,"50":18,"60":12,"70":8 } },
+      "forecast": []
+    },
+    {
+      "rank": 3, "prevRank": 3, "name": "사라질역", "category": "인구밀집지역",
+      "congestLevel": "여유", "congestMessage": "여유로워요",
+      "populationMin": 1000, "populationMax": 1500, "populationTime": "2026-07-10 08:30",
+      "stale": true, "staleCount": 2,
+      "rates": { "male": 50, "female": 50, "age": { "0":0,"10":2,"20":18,"30":20,"40":22,"50":18,"60":12,"70":8 } },
+      "forecast": []
+    }
+  ]
+}
