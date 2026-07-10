@@ -70,7 +70,8 @@ async function mapWithConcurrency<T, R>(
       results[current] = await fn(items[current]);
     }
   }
-  const workers = Array.from({ length: Math.min(limit, items.length) }, () => worker());
+  const workerCount = items.length === 0 ? 0 : Math.max(1, Math.min(limit, items.length));
+  const workers = Array.from({ length: workerCount }, () => worker());
   await Promise.all(workers);
   return results;
 }
